@@ -1,7 +1,10 @@
 <p1>
-尚未完成
+基本完成主要bilibili首页功能
 </p1>
 <hr>
-无法使用内容已在页面中标出
-<br>
-目前除记录历史搜索记录外基本可用
+<img src="https://p.inari.site/usr/846/65ce4d1010e9f.jpg">
+</img>
+<p2>
+  功能1：
+  
+</p2>
