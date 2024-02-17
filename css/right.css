@@ -1,0 +1,123 @@
+
+.right{
+    width: 15%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.right_profile{
+    width: 100%;
+    height: 16.8%;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+.right_homepage{
+    width: 100%;
+    height: 16.64%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.right_homepage_container{
+    width: 42px;
+    height: 42px;
+    background-color: white;
+    border-style: dotted;
+    border-width: 1px;
+    border-color: black;
+    border-radius: 50%;
+    opacity: 0.7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.right_homepage_container_img{
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+}
+
+.right_favour{
+    width: 100%;
+    height: 16.64%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.right_favour_img{
+}
+
+.right_favour_img:hover{
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(360deg); }
+}
+
+.right_feed{
+    width: 100%;
+    height: 16.64%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.right_feed_img{
+
+}
+
+.right_feed_img:hover{
+    animation: spin 2s linear infinite;
+}
+
+.right_history{
+    width: 100%;
+    height: 16.64%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.right_history_img{
+
+}
+
+.right_history_img:hover{
+    animation: spin 2s linear infinite;
+}
+
+.right_message{
+    width: 100%;
+    height: 16.64%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.right_message_img{
+    
+}
+
+.right_message_img:hover{
+    animation: spin 2s linear infinite;
+}

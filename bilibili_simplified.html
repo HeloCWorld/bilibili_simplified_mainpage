@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BiliBili简化首页</title>
+
+    <style>
+        body{
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        body::after {
+            content: "";
+            background: url('img/background_img/2.jpg') no-repeat center center fixed; 
+            background-size: cover;
+            background-repeat: no-repeat;
+            opacity: 0.4;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            position: absolute;
+            z-index: -1;   
+        }
+
+
+    </style>
+
+    <link rel="stylesheet" href="css/left.css">
+    <link rel="stylesheet" href="css/middle.css">
+    <link rel="stylesheet" href="css/right.css">
+
+</head>
+
+<body>
+    <div class="left">
+        <div class="left_profile">
+            <div class="left_profile_avatar" id="uploadedImageContainer">
+                <img class="left_profile_avatar_img" id="uploadedImage" src="img/default_avatar.png" alt="默认头像">
+                <div id="uploadText">上传<br>头像</div>
+            </div>
+            <input type="file" accept="image/*" id="fileInput" onchange="previewImage(event)">
+
+            <div class="left_profile_intro">
+                <div class="left_profile_intro_UID">
+                    <div class="left_profile_intro_UID_prompt">
+                        <div style="color: red;">
+                            *
+                        </div>
+                        UID:
+                    </div>
+                    <input class="left_profile_intro_UID_text" required type="number" id="numberInput" placeholder="（必填）请输入你的UID">
+                </div>
+        
+                <div class="left_profile_intro_nickname">
+                    <div class="left_profile_intro_nickname_prompt">
+                        昵称：
+                    </div>
+                    <input class="left_profile_intro_nickname_text" id="nicknameInput">
+                </div>
+                
+                <div class="left_profile_intro_button">
+                    <button class="left_profile_intro_button_submit" onclick="saveData()">提交</button>
+                    <button class="left_profile_intro_button_reset" onclick="clearData()">清空</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="left_mascot">
+            隐藏（目前停用）
+            <img class="left_mascot_img" src="img\kafuuchino.png" alt="">
+        </div>
+
+        <div class="left_designer">
+            <div class="left_designer_prompt">
+                DESIGNER：隐藏（目前停用）
+                <div class="">
+                    <a href="">
+                        Github（目前停用）
+                    </a>
+                </div>
+            </div>
+            <div class="left_designer_avatar">
+                <img class="left_designer_avatar_img" src="img\designer_avatar.jpg" alt="">
+            </div>
+            <div class="left_designer_intro">
+                <div class="left_designer_intro_nickname">
+                    你好，世界
+                </div>
+                <div class="left_designer_intro_contact">
+                    Contact: helocworld@qq.com
+                </div>
+            </div>
+        </div>
+
+        <div class="left_copyright">
+            Copyright &copy; 2024 HeloCWorld
+        </div>
+    </div>
+
+    
+    <div class="middle">
+        <div class="middle_up">
+            <div class="middle_up_icon">
+                <a class="middle_up_icon_reference" href="https://www.bilibili.com/" target="_blank">
+                    <img class="middle_up_icon_reference_img" src="img\bilibili_icon.png" alt="bilibili图标">
+                </a>
+            </div>
+
+            <div class="middle_up_search">
+                <input class="middle_up_search_text" type="text" onkeydown="handleKeyDown(event)">
+            </div>
+
+            <div class="middle_up_magnifyglass">
+                <img class="middle_up_magnifyglass_img" src="img/magnifyglass.png" alt="搜索" onclick="searchKeyword()">
+            </div>
+            搜索：关键词（√）/ BV号（目前停用）
+        </div>
+
+        <div class="middle_history">
+            <div class="middle_history_record" id="historyRecord">
+                <div class="middle_history_record_prompt">
+                    历史记录（目前停用）
+                </div>
+                <div class="middle_history_record_time" id="recordTime">
+                </div>
+                <div class="middle_history_record_list" id="recordList">
+                </div>
+            </div>
+            <div class="middle_history_operate">
+                <div class="middle_history_operate_prompt">
+                    操作 停止记录 删除全部（目前停用）
+                </div>
+
+                <div class="middle_history_operate_act">
+                    <div class="middle_history_operate_copy">
+                        复制
+                    </div>
+                    <div class="middle_history_operate_search">
+                        搜索
+                    </div>
+                    <div class="middle_history_operate_delete">
+                        删除
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    </div>
+    <div class="right">
+        <div class="right_profile">
+            背景图片上传（停用）
+            <br>
+            网页透明度（停用）
+            <br>
+            背景图片透明度（停用）
+            <br>
+            个人资料
+        </div>
+        <div class="right_homepage">
+            <div class="right_homepage_container">
+                <a href="#" target="_blank"" onclick="gotoHomePage()">
+                    <img id="avatarPreview" src="img/default_avatar.png" class="right_homepage_container_img" alt="主页">
+                </a>
+            </div>
+            <div>
+                个人中心
+            </div>
+        </div>
+        <div class="right_favour">
+            <a href="" target="_blank" onclick="gotoFavour()">
+                <img class="right_favour_img" src="img\favour.png" alt="收藏">
+            </a>
+            <div>
+                收藏
+            </div>
+        </div>
+        <div class="right_feed">
+            <a href="https://t.bilibili.com/" target="_blank">
+                <img class="right_feed_img" src="img\feed.png" alt="动态">
+            </a>
+            <div>
+                动态
+            </div>
+        </div>
+        <div class="right_history">
+            <a href="https://www.bilibili.com/account/history" target="_blank">
+                <img class="right_history_img" src="img\history.png" alt="历史">
+            </a>
+            <div>
+                历史
+            </div>
+        </div>
+        <div class="right_message">
+            <a href="https://message.bilibili.com/" target="_blank">
+                <img class="right_message_img" src="img\message.png" alt="消息">
+            </a>
+            <div>
+                消息
+            </div>
+        </div>
+    </div>
+
+    <script src="js/uploadAvatar.js"></script>
+    <script src="js/updateProfile.js"></script>
+    <script src="js/mygo.js"></script>
+    <script src="js/search.js"></script>
+
+
+</body>
+</html>

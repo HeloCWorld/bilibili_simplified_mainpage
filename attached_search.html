@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>搜索页面</title>
+    <style>
+        /* 设置历史记录项悬停时鼠标指针为手型 */
+        #keywordList li {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>    
+    <a target="_blank" href="https://space.bilibili.com/450730000/favlist">
+        我的收藏
+    </a>
+    <br>
+    <br>
+    <label for="searchInput">请输入关键词：</label>
+    <input type="text" id="searchInput" placeholder="在这里输入关键词" onkeypress="handleKeyPress(event)">
+
+    <button onclick="searchBilibili()">搜索</button>
+    <button onclick="clearHistory()">清除全部历史记录</button>
+
+    <div id="previousKeywords">
+        <p>所有查询内容：</p>
+        <ul id="keywordList"></ul>
+    </div>
+
+    <script>
+        // 从本地存储读取历史记录，如果没有则初始化为空数组
+        var allKeywords = JSON.parse(localStorage.getItem('searchHistory')) || [];
+
+        // 初始化页面显示
+        updateKeywordList();
+
+        function searchBilibili() {
+            // 获取输入框的值
+            var inputContent = document.getElementById("searchInput").value;
+
+            // 构造跳转链接
+            var searchLink = generateSearchLink(inputContent);
+
+            // 在新标签页中打开链接
+            window.open(searchLink, '_blank');
+
+            // 添加查询内容及时间到数组
+            var searchTime = new Date().toLocaleString(); // 获取当前时间
+            allKeywords.unshift({ keyword: inputContent, time: searchTime }); // 将最新记录放在最前面
+
+            // 更新本地存储
+            localStorage.setItem('searchHistory', JSON.stringify(allKeywords));
+
+            // 更新显示的查询内容列表
+            updateKeywordList();
+        }
+
+        function generateSearchLink(inputContent) {
+            // 检测输入的内容是否以"BV"开头的数字和字母组合
+            var bvPattern = /^BV[a-zA-Z0-9]+$/;
+
+            if (bvPattern.test(inputContent)) {
+                // 如果匹配，则构造Bilibili视频链接
+                return "https://www.bilibili.com/video/" + inputContent;
+            } else {
+                // 否则，构造普通搜索链接
+                return "https://search.bilibili.com/all?vt=28604666&keyword=" + encodeURIComponent(inputContent);
+            }
+        }
+
+        function handleKeyPress(event) {
+            // 检查是否按下的是回车键
+            if (event.key === 'Enter') {
+                // 调用搜索函数
+                searchBilibili();
+            }
+        }
+
+        function updateKeywordList() {
+            // 更新显示的查询内容列表
+            var keywordListElement = document.getElementById("keywordList");
+            keywordListElement.innerHTML = ''; // 清空列表
+
+            // 反向遍历数组以便最新的历史记录放在最前面
+            for (var i = allKeywords.length - 1; i >= 0; i--) {
+                var item = allKeywords[i];
+                var li = document.createElement("li");
+                var keywordWithTime = item.keyword + ' - ' + item.time;
+                li.appendChild(document.createTextNode(keywordWithTime));
+
+                // 添加点击事件处理程序
+                li.onclick = (function(keyword) {
+                    return function() {
+                        // 将关键词填充到输入框中
+                        document.getElementById("searchInput").value = keyword;
+                    };
+                })(item.keyword);
+
+                // 添加清除按钮
+                var deleteButton = document.createElement("button");
+                deleteButton.textContent = "删除";
+                deleteButton.onclick = (function(index) {
+                    return function() {
+                        deleteKeyword(index);
+                    };
+                })(i);
+                li.appendChild(deleteButton);
+
+                keywordListElement.appendChild(li);
+            }
+        }
+
+        function deleteKeyword(index) {
+            // 删除指定索引的历史记录
+            allKeywords.splice(index, 1);
+            // 更新本地存储
+            localStorage.setItem('searchHistory', JSON.stringify(allKeywords));
+            // 更新显示的查询内容列表
+            updateKeywordList();
+        }
+
+        function clearHistory() {
+            // 清除全部历史记录
+            allKeywords = [];
+            // 清除本地存储
+            localStorage.removeItem('searchHistory');
+            // 更新显示的查询内容列表
+            updateKeywordList();
+        }
+    </script>
+
+
+</body>
+</html>

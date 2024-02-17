@@ -1,0 +1,192 @@
+    .middle{
+        width: 60%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .middle_up{
+        width: 100%;
+        height: 30%;
+        display: flex;
+    }
+
+    .middle_up_icon{
+        width: 15%;
+        height: 100%;
+        box-sizing: border-box;
+        margin: 0 10px 0 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .middle_up_icon_reference{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .middle_up_icon_reference_img{
+        
+        width: calc(100% - 10px);
+        height: 100%;
+        object-fit: contain;
+
+    }
+
+    .middle_up_search{
+        width: 62%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .middle_up_search_text{
+        width: 96%;
+        height: 12%;
+        background-color: rgb(241, 242, 243);
+        opacity: 0.7;
+        border-style: solid;
+        border-radius: 5px;
+        border-color: rgb(227, 229, 231);
+    }
+
+    .middle_up_search_text:hover{
+        transition: background-color 0.5s ease 0s;
+        background-color: rgb(255, 255, 255);
+        transition: opacity 0.5s ease 0s;
+        opacity: 1;
+        
+    }
+
+    .middle_up_magnifyglass{
+        width: 23%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        box-sizing: border-box;
+        margin: 0 10px 0 10px;
+    }
+
+    .middle_up_magnifyglass_img{
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    .middle_up_magnifyglass_img:hover{
+        cursor: pointer;
+    }
+
+    .middle_history{
+        width: 100%;
+        height: calc(70% - 30px);
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        box-sizing: border-box;
+        border-radius: 5px;
+        box-shadow: 0 0 0 2px black;
+    }
+
+    .middle_history_record{
+        width: 65%;
+        height: calc(100% - 20px);
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-bottom: 10px;
+    }
+    
+    .middle_history_record_prompt{
+        width: 100%;
+        height: 20px;
+        font-size: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        border-style: none solid solid none;
+        border-color: black;
+        border-width: 0 1px 2px 0;
+
+    }
+    
+    .middle_history_record_time{
+        width: 30%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    
+    .middle_history_record_list{
+        width: 70%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .middle_history_operate{
+        width: 35%;
+        height: 100%;
+        justify-content: start;
+        align-items: center;
+    }
+    
+    .middle_history_operate_prompt{
+        width: 100%;
+        height: 20px;
+        font-size: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        border-style: none none solid solid;
+        border-color: black;
+        border-width: 0 0 2px 1px;
+    }
+
+.middle_history_operate_act{
+    width: 100%;
+    height: calc(100% - 20px);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.middle_history_operate_copy{
+    width: calc(100% / 3);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.middle_history_operate_search{
+    width: calc(100% / 3);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.middle_history_operate_delete{
+    width: calc(100% / 3);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
